@@ -1,36 +1,255 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# VibeLink  
+### play.match.connect  
 
-## Getting Started
+## 👥 Team Name  
+*ConniX*
 
-First, run the development server:
+---
 
-```bash
+## 🚨 Problem Statement
+
+Most networking and dating platforms rely heavily on profiles, photos, and swiping mechanisms.
+
+These traditional approaches fail to measure:
+
+- Real communication chemistry  
+- Personality compatibility  
+- Interaction quality  
+
+As a result, users struggle to build meaningful and genuine connections based on actual behavioral compatibility.
+
+---
+
+## 🌍 Why This Is Important
+
+- Genuine connections improve collaboration, friendships, mentorship, and relationships.  
+- Gen-Z prefers interactive, engaging platforms instead of static profile browsing.  
+- The future of connection is experience-based, not appearance-based.
+
+---
+
+## 💡 Our Solution — VibeLink
+
+*VibeLink* is a gamified, reality-show-inspired platform that matches people based on communication, personality, and behavior instead of profile pictures.
+
+Users join themed *Connection Rooms* such as:
+
+- Friendship  
+- Love  
+- Mentorship  
+- Travel  
+- Collaboration  
+
+Instead of swiping, participants go through interactive compatibility challenges.
+
+---
+
+## 🎮 Core Features
+
+### 🔹 Question Round (Real Talk)
+Participants answer meaningful real-time questions to measure personality alignment.
+
+### 🔹 Synergy Team Round
+Users collaborate on quick tasks to test teamwork and compatibility.
+
+### 🔹 Blind Chat Round
+Text-based interaction without profile bias.
+
+### 🔹 Humor Compatibility Round
+Fun meme or humor-based challenges to measure vibe match.
+
+### 🔹 AI-Based Compatibility Score
+The system calculates a dynamic connection score based on interaction behavior and responses.
+
+---
+
+## 🏗 Architecture Overview
+
+
+User Browser
+     |
+     v
+Next.js Frontend (React + App Router + TypeScript)
+     |
+     v
+Node.js Server (API Routes)
+     |
+     v
+Socket.io Server (Real-time Multiplayer Rooms)
+
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+- *Next.js (React + App Router)* — UI rendering and routing  
+- *TypeScript* — Strongly typed components  
+- *Tailwind CSS* — Futuristic neon styling and responsive design  
+- *Custom UI Components (TSX)* — RealTalkRound, SynergyTest, MemeBattleRound, etc.
+
+### Backend / Real-time Logic
+### Data / State Management
+ 
+
+### Deployment & Dev Tools
+
+---
+
+## ⚙ Setup Instructions
+
+### 1️⃣ Clone the Repository
+
+
+git clone https://github.com/soumyasingh1406/Vibelink.git
+
+
+
+### 2️⃣ Navigate to Project Folder
+
+
+cd Vibelink
+
+
+### 3️⃣ Install Dependencies
+
+
+npm install
+
+
+### 4️⃣ Run Development Server
+
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Application runs at:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+http://localhost:3000
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🤖 AI Tools Used
 
-## Deploy on Vercel
+- ChatGPT — Used for development guidance, debugging, documentation structuring, and system design refinement.
+- AI-based compatibility logic for scoring interactions.
+- Claude
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🧠 Prompt Strategy Summary
+
+We used structured and iterative prompting to:
+
+- Debug Git configuration and authentication issues  
+- Architect real-time multiplayer interaction flow  
+- Refine compatibility scoring logic  
+- Structure hackathon-ready documentation  
+- Optimize reproducibility instructions  
+
+Prompts were refined step-by-step to achieve accurate and production-ready results.
+
+---
+
+## 📸 Final Output
+
+The final application provides:
+
+- Themed connection rooms  
+- Real-time multiplayer interaction  
+- Gamified compatibility challenges  
+- AI-based scoring system  
+- Futuristic neon glass UI  
+
+---
+
+## 🌟 Impact
+
+VibeLink encourages:
+
+- Meaningful conversations instead of superficial matching  
+- Behavior-based compatibility  
+- Engaging social interaction experiences  
+
+It can be used for:
+
+- Networking events  
+- Mentorship programs  
+- Dating platforms  
+- Team-building activities  
+
+---
+
+## 🔮 Future Scope
+
+- AI emotional-intelligence scoring  
+- Voice-based compatibility rounds  
+- Live audience voting  
+- Advanced behavioral analytics  
+- Mobile app deployment  
+
+---
+---
+
+## 📂 Source Code Structure
+
+All core compatibility rounds and real-time interaction logic are implemented within the src and socket-server.js files.
+
+
+## 🔁 Build Reproducibility Instructions 
+
+To fully reproduce this project locally:
+
+### Prerequisites
+- Node.js v18 or higher
+- npm (comes with Node.js)
+
+### Steps
+
+1. Clone the repository:
+   
+   git clone https://github.com/soumyasingh1406/Vibelink.git
+   
+
+2. Navigate into the project directory:
+   
+   cd Vibelink
+   
+
+3. Install dependencies:
+   
+   npm install
+   
+
+4. Start the development server:
+   
+   npm run dev
+   
+
+5. Open your browser and visit:
+   
+   http://localhost:3000
+   
+
+---
+
+No additional environment variables are required for the hackathon prototype.
+
+The build can be fully reproduced using the steps above.
+
+---
+
+## 📎 Repository Link
+
+https://github.com/soumyasingh1406/Vibelink
+---
+
+## 🎯 Closing Statement
+
+*VibeLink — Connecting people through conversations, not profiles.*
+
+---
+
+
