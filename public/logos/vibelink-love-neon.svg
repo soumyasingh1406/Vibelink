@@ -1,0 +1,55 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="cyberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="#ff00ff" />
+<stop offset="50%" stop-color="#bd00ff" />
+<stop offset="100%" stop-color="#00eaff" />
+</linearGradient>
+<filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+<feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+<feMerge>
+<feMergeNode in="coloredBlur"/>
+<feMergeNode in="SourceGraphic"/>
+</feMerge>
+</filter>
+</defs>
+
+<!-- Hand Outline: ASL I Love You (Thumb, Index, Pinky extended. Middle & Ring curled) -->
+<!-- Palm and Wrist -->
+<path d="M60 180 L60 130 Q60 110 50 100" stroke="url(#cyberGrad)" stroke-width="5" stroke-linecap="round" fill="none" filter="url(#neonGlow)" />
+<path d="M140 180 L140 130 Q140 110 150 100" stroke="url(#cyberGrad)" stroke-width="5" stroke-linecap="round" fill="none" filter="url(#neonGlow)" />
+<path d="M60 180 L140 180" stroke="url(#cyberGrad)" stroke-width="5" stroke-linecap="round" fill="none" filter="url(#neonGlow)" />
+
+<!-- Thumb (Extended) -->
+<path d="M50 100 Q30 90 20 70 L35 60 Q50 80 60 100" stroke="url(#cyberGrad)" stroke-width="5" stroke-linecap="round" fill="none" filter="url(#neonGlow)" />
+
+<!-- Index Finger (Extended) -->
+<path d="M60 100 L60 40 Q60 30 75 30 L85 30 Q100 30 100 40 L100 100" stroke="url(#cyberGrad)" stroke-width="5" stroke-linecap="round" fill="none" filter="url(#neonGlow)" />
+
+<!-- Middle Finger (Curled) -->
+<path d="M100 100 L100 80 Q100 70 110 70 L115 70 Q120 70 120 80 L120 100" stroke="url(#cyberGrad)" stroke-width="4" stroke-linecap="round" fill="none" filter="url(#neonGlow)" opacity="0.8"/>
+<path d="M105 85 L115 85" stroke="#00eaff" stroke-width="2" />
+
+<!-- Ring Finger (Curled) -->
+<path d="M120 100 L120 85 Q120 75 130 75 L135 75 Q140 75 140 85 L140 100" stroke="url(#cyberGrad)" stroke-width="4" stroke-linecap="round" fill="none" filter="url(#neonGlow)" opacity="0.8"/>
+<path d="M125 90 L135 90" stroke="#00eaff" stroke-width="2" />
+
+<!-- Pinky Finger (Extended) -->
+<path d="M140 100 L140 50 Q140 40 155 40 L165 40 Q180 40 180 50 L180 90 Q180 100 150 100" stroke="url(#cyberGrad)" stroke-width="5" stroke-linecap="round" fill="none" filter="url(#neonGlow)" />
+
+<!-- Cyber/Tech Details -->
+<circle cx="100" cy="140" r="12" stroke="#00eaff" stroke-width="3" fill="none" filter="url(#neonGlow)" />
+<circle cx="100" cy="140" r="4" fill="#ff00ff" filter="url(#neonGlow)" />
+<path d="M100 30 L100 20" stroke="#ff00ff" stroke-width="2" filter="url(#neonGlow)"/>
+<circle cx="100" cy="15" r="3" fill="#00eaff" filter="url(#neonGlow)"/>
+
+<path d="M60 130 L90 140" stroke="#bd00ff" stroke-width="2" opacity="0.6" />
+<path d="M140 130 L110 140" stroke="#bd00ff" stroke-width="2" opacity="0.6" />
+<path d="M100 152 L100 180" stroke="#bd00ff" stroke-width="2" opacity="0.6" stroke-dasharray="4 4"/>
+
+<!-- Heart Hologram -->
+<path d="M165 25 Q180 10 190 25 Q195 35 185 45 L165 65 L145 45 Q135 35 140 25 Q150 10 165 25" stroke="#ff00ff" stroke-width="2" fill="none" filter="url(#neonGlow)" opacity="0.8">
+<animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite" />
+</path>
+
+</svg>

@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>VibeLink | Find Your Vibe</title>
+  <style>
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* PART 8: COLOR SCHEME & STYLING */
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: white;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Screen Management */
+    .screen {
+      display: none;
+      width: 100%;
+      height: 100vh;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .screen.active {
+      display: flex;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* PART 1: ROOM SELECTION SCREEN */
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    #room-selection {
+      gap: 20px;
+    }
+
+    h1.title {
+      font-size: 3rem;
+      margin-bottom: 40px;
+      background: linear-gradient(to right, #4CAF50, #00C9A7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .room-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 800px;
+      width: 100%;
+      padding: 20px;
+    }
+
+    .room-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 20px;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+
+    .room-btn:hover {
+      background: #4CAF50;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* PART 2: GAME SCREEN LAYOUT */
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    #game-container {
+      display: flex;
+      width: 100%;
+      height: 100vh;
+    }
+
+    /* HEADER BAR */
+    .header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      z-index: 10;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .room-display {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+    }
+
+    .room-display span {
+      color: #4CAF50;
+      text-transform: lowercase;
+    }
+
+    .timer-display {
+      font-size: 2rem;
+      font-weight: bold;
+      font-family: monospace;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 5px 20px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .round-badge {
+      font-size: 1rem;
+      font-weight: bold;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 8px 16px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* MAIN CONTENT AREA */
+    .main-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 80px 40px 40px; /* Top padding for header */
+      position: relative;
+    }
+
+    .challenge-badge {
+      background: rgba(76, 175, 80, 0.2);
+      color: #4CAF50;
+      padding: 8px 20px;
+      border-radius: 20px;
+      margin-bottom: 30px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      border: 1px solid rgba(76, 175, 80, 0.3);
+    }
+
+    .question-text {
+      font-size: 3rem; /* Large font */
+      text-align: center;
+      margin-bottom: 50px;
+      font-weight: bold;
+      line-height: 1.2;
+      max-width: 900px;
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .input-area {
+      width: 100%;
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .input-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* PART 5: CRITICAL CSS RULES */
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    textarea#answer-input {
+      width: 100%;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      color: white;
+      font-size: 1.2rem;
+      resize: vertical;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.3s ease;
+      min-height: 80px;
+
+      /* CRITICAL FIXES */
+      pointer-events: auto !important;
+      user-select: text !important;
+      -webkit-user-select: text !important;
+      cursor: text !important;
+      touch-action: auto !important;
+    }
+
+    textarea#answer-input:focus {
+      border-color: #4CAF50;
+      background: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 15px rgba(76, 175, 80, 0.3);
+    }
+
+    .char-counter {
+      text-align: right;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 5px;
+    }
+
+    button.submit-btn {
+      align-self: flex-end;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-transform: uppercase;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    button.submit-btn:hover {
+      background: #45a049;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    button.submit-btn:active {
+      transform: translateY(0);
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      width: 300px;
+      background: rgba(0, 0, 0, 0.2);
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 100px 20px 20px; /* Top padding for header */
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sidebar h3 {
+      font-size: 0.9rem;
+      color: #4CAF50;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 10px;
+    }
+
+    .user-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .user-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: background 0.2s;
+    }
+
+    .user-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .avatar {
+      font-size: 1.5rem;
+    }
+
+    .username {
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    /* RESULTS SCREEN */
+    #results-screen {
+      text-align: center;
+      padding: 40px;
+    }
+
+    .results-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 600px;
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .results-title {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PART 1: ROOM SELECTION SCREEN -->
+  <div id="room-selection" class="screen active">
+    <h1 class="title">Choose Your Vibe Room</h1>
+    <div class="room-grid">
+      <button class="room-btn" onclick="selectRoom('friendship')">Friendship</button>
+      <button class="room-btn" onclick="selectRoom('collaborators')">Collaborators</button>
+      <button class="room-btn" onclick="selectRoom('mentorship')">Mentorship</button>
+      <button class="room-btn" onclick="selectRoom('travel-buddies')">Travel Buddies</button>
+      <button class="room-btn" onclick="selectRoom('love-connection')">Love Connection</button>
+    </div>
+  </div>
+
+  <!-- PART 2: GAME SCREEN -->
+  <div id="game-screen" class="screen">
+    <div id="game-container">
+      
+      <!-- HEADER BAR -->
+      <div class="header">
+        <div class="room-display">🟢 ROOM: <span id="current-room-name">loading...</span></div>
+        <div class="timer-display">⏰ <span id="timer-val">30</span>s</div>
+        <div class="round-badge">ROUND 1</div>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <div class="main-area">
+        <div class="challenge-badge">QUESTION <span id="q-num">1</span> / 5</div>
+        <div class="question-text" id="q-text">Loading...</div>
+        
+        <div class="input-area">
+          <div class="input-wrapper">
+             <textarea id="answer-input" placeholder="Type your answer here..." rows="3" maxlength="500"></textarea>
+             <div class="char-counter"><span id="char-count">0</span>/500</div>
+          </div>
+          <button class="submit-btn" onclick="submitAnswer()">SUBMIT ANSWER</button>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="sidebar">
+        <h3>VIBERS (6)</h3>
+        <div class="user-list" id="users-container">
+           <!-- Populated by JS -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RESULTS SCREEN -->
+  <div id="results-screen" class="screen">
+    <div class="results-card">
+      <div class="results-title">🎉 Round Complete!</div>
+      <p style="font-size: 1.2rem; margin-bottom: 30px; color: #ccc;">
+        You've completed all 5 challenges! Calculating vibe matches...
+      </p>
+      
+      <div style="font-size: 4rem; margin-bottom: 30px;">💯</div>
+      
+      <button class="submit-btn" onclick="location.reload()">PLAY AGAIN</button>
+    </div>
+  </div>
+
+  <!-- PART 6: JAVASCRIPT STATE MANAGEMENT -->
+  <script>
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* CONFIGURATION & DATA */
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    
+    // PART 3: 5 QUESTIONS FOR EACH ROOM
+    const ROOM_CHALLENGES = {
+      friendship: [
+        "What's your idea of a perfect weekend with friends?",
+        "If you could have dinner with anyone dead or alive, who and why?",
+        "What's your most embarrassing friendship moment?",
+        "How do you handle conflicts with friends?",
+        "Describe your ideal friend group in 3 words"
+      ],
+      collaborators: [
+        "Describe your work style in 3 words and explain why",
+        "What's your biggest professional achievement so far?",
+        "How do you handle disagreements in a team setting?",
+        "What skills are you currently trying to develop?",
+        "Your project deadline is tomorrow but there's a major bug. What do you do?"
+      ],
+      mentorship: [
+        "What's the biggest challenge you're facing right now?",
+        "What skills do you want to develop in the next 6 months?",
+        "Who has been your biggest inspiration and why?",
+        "What does success look like to you?",
+        "Describe a time when failure taught you something valuable"
+      ],
+      "travel-buddies": [
+        "Beach vacation or mountain adventure - and why?",
+        "What's your most memorable travel experience?",
+        "Luxury hotel or local homestay - what's your preference?",
+        "What's your travel dealbreaker (something you can't compromise on)?",
+        "If you could teleport anywhere right now, where would you go?"
+      ],
+      "love-connection": [
+        "What makes you laugh the hardest?",
+        "Describe your perfect date night in detail",
+        "What's your love language and why does it resonate with you?",
+        "What's a dealbreaker for you in a relationship?",
+        "How do you show someone you care about them?"
+      ]
+    };
+
+    // MOCK USERS as requested
+    const MOCK_USERS = [
+      { name: 'soumya', avatar: '👤' },
+      { name: 'Alice', avatar: '🦄' },
+      { name: 'Bob', avatar: '🚀' },
+      { name: 'Charlie', avatar: '🎨' },
+      { name: 'Diana', avatar: '🌟' },
+      { name: 'Emma', avatar: '🎭' }
+    ];
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* STATE VARIABLES */
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    let currentRoom = null;
+    let currentQuestionIndex = 0;
+    let timeRemaining = 30;
+    let timerInterval = null;
+    let userAnswers = [];
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* CORE FUNCTIONS */
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+    function selectRoom(roomName) {
+      currentRoom = roomName;
+      currentQuestionIndex = 0;
+      userAnswers = [];
+      
+      // 1. Hide room selection, show game screen
+      document.getElementById('room-selection').classList.remove('active');
+      document.getElementById('game-screen').classList.add('active');
+      
+      // 2. Set room name in header
+      document.getElementById('current-room-name').textContent = roomName.replace('-', ' ');
+      
+      // 3. Populate Sidebar users
+      populateUsers();
+      
+      // 4. Load first question
+      loadQuestion(0);
+      
+      // 5. Start timer
+      startTimer();
+    }
+
+    function populateUsers() {
+      const container = document.getElementById('users-container');
+      container.innerHTML = '';
+      
+      MOCK_USERS.forEach(u => {
+        const div = document.createElement('div');
+        div.className = 'user-item';
+        div.innerHTML = `
+          <div class="avatar">${u.avatar}</div>
+          <div class="username">${u.name}</div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function loadQuestion(index) {
+      if (!currentRoom) return;
+      
+      // Get questions for room
+      const questions = ROOM_CHALLENGES[currentRoom];
+      
+      // 1. Update UI
+      document.getElementById('q-num').textContent = index + 1;
+      document.getElementById('q-text').textContent = questions[index];
+      
+      // 2. Reset Input
+      const input = document.getElementById('answer-input');
+      input.value = '';
+      input.focus();
+      document.getElementById('char-count').textContent = '0';
+      
+      // 3. Reset Timer Display
+      timeRemaining = 30;
+      document.getElementById('timer-val').textContent = timeRemaining;
+    }
+
+    function startTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+      
+      timeRemaining = 30;
+      document.getElementById('timer-val').textContent = timeRemaining;
+      
+      timerInterval = setInterval(() => {
+        timeRemaining--;
+        document.getElementById('timer-val').textContent = timeRemaining;
+        
+        if (timeRemaining <= 0) {
+          submitAnswer(true); // Auto submit
+        }
+      }, 1000);
+    }
+
+    function submitAnswer(isAuto = false) {
+      const input = document.getElementById('answer-input');
+      const answer = input.value.trim();
+      
+      // If manual submit and empty, warn
+      if (!isAuto && !answer) {
+        alert("Please type an answer to continue!");
+        input.focus();
+        return;
+      }
+      
+      // Save answer
+      userAnswers.push(answer || "(No Answer)");
+      console.log(`Submitted Q${currentQuestionIndex + 1}:`, answer);
+      
+      // Advance Logic
+      currentQuestionIndex++;
+      
+      if (currentQuestionIndex < 5) {
+        // Next Question
+        loadQuestion(currentQuestionIndex);
+        startTimer(); // Restart timer
+      } else {
+        // End Game
+        showResults();
+      }
+    }
+
+    function showResults() {
+      if (timerInterval) clearInterval(timerInterval);
+      
+      document.getElementById('game-screen').classList.remove('active');
+      document.getElementById('results-screen').classList.add('active');
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* EVENT LISTENERS */
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    
+    // Character Counter
+    document.getElementById('answer-input').addEventListener('input', function(e) {
+      const len = e.target.value.length;
+      document.getElementById('char-count').textContent = len;
+    });
+
+    // Enter to Submit (Ctrl+Enter for textarea, or just Enter if preferred? Prompt didn't specify, but nice to have)
+    document.getElementById('answer-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault(); // preventing newline
+        submitAnswer();
+      }
+    });
+
+  </script>
+</body>
+</html>

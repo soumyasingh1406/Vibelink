@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="friendshipGrad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f472b6" />   <!-- Pink -->
+      <stop offset="1" stop-color="#a855f7" />   <!-- Purple -->
+    </linearGradient>
+    <filter id="neonFriendship" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+      <feMerge>
+        <feMergeNode in="coloredBlur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g filter="url(#neonFriendship)">
+    <!-- Person 1 -->
+    <circle cx="35" cy="40" r="10" stroke="url(#friendshipGrad)" stroke-width="4" />
+    <path d="M20 80 Q35 55 50 80" stroke="url(#friendshipGrad)" stroke-width="4" fill="none" stroke-linecap="round" />
+
+    <!-- Person 2 (Interconnected) -->
+    <circle cx="65" cy="40" r="10" stroke="#22d3ee" stroke-width="4" />
+    <path d="M50 80 Q65 55 80 80" stroke="#22d3ee" stroke-width="4" fill="none" stroke-linecap="round" />
+    
+    <!-- Connection Heart/Link -->
+    <path d="M45 45 C45 45 50 55 55 45" stroke="#f472b6" stroke-width="3" opacity="0.8" />
+  </g>
+</svg>

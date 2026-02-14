@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+:root {
+  --background: #020205;
+  --foreground: #ededed;
+
+  --holo-pink: #ff0099;
+  --holo-blue: #00f3ff;
+  --holo-purple: #bd00ff;
+}
+
+body {
+  background-color: var(--background);
+  background-image:
+    radial-gradient(circle at 50% -20%, #1a1a40 0%, #020205 70%),
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050510;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--holo-blue);
+  box-shadow: 0 0 10px var(--holo-blue);
+}
+
+@layer utilities {
+
+  /* HOLOGRAPHIC PANEL SHAPE */
+  .holo-shape {
+    clip-path: polygon(20px 0,
+        100% 0,
+        100% calc(100% - 20px),
+        calc(100% - 20px) 100%,
+        0 100%,
+        0 20px);
+  }
+}
+
+/* Deep Space Animations */
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes drift {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(30px, 30px);
+  }
+}
+
+@keyframes drift-reverse {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-30px, -30px);
+  }
+}
+
+@keyframes pulse-slow {
+
+  0%,
+  100% {
+    opacity: 0.1;
+  }
+
+  50% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-twinkle {
+  animation: twinkle 3s infinite ease-in-out;
+}
+
+/* Added duration default */
+.animate-drift {
+  animation: drift 20s infinite ease-in-out;
+}
+
+.animate-drift-reverse {
+  animation: drift-reverse 25s infinite ease-in-out;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s infinite ease-in-out;
+}
+
+.animate-float {
+  animation: float 6s infinite ease-in-out;
+}

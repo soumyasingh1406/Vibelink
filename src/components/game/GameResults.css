@@ -1,0 +1,199 @@
+/* GameResults.css */
+
+.game-results-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.results-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.results-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.game-type {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.results-list {
+  width: 100%;
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
+}
+
+.player-result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.player-result:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.player-result.winner {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  border: 2px solid #ffc107;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.rank {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 80px;
+}
+
+.medal {
+  font-size: 2rem;
+}
+
+.position {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #495057;
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.player-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #dee2e6;
+}
+
+.player-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #212529;
+}
+
+.player-score {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  min-width: 100px;
+}
+
+.score-value {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #667eea;
+}
+
+.score-label {
+  font-size: 0.85rem;
+  color: #6c757d;
+  text-transform: uppercase;
+}
+
+.results-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-primary {
+  background: #28a745;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #5a6268;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(108, 117, 125, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .game-results-container {
+    padding: 1rem;
+  }
+  
+  .results-header h1 {
+    font-size: 2rem;
+  }
+  
+  .player-result {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .rank {
+    min-width: 60px;
+  }
+  
+  .medal {
+    font-size: 1.5rem;
+  }
+  
+  .player-info {
+    flex: 1 1 100%;
+    order: 3;
+    margin-top: 0.5rem;
+  }
+  
+  .player-score {
+    min-width: auto;
+  }
+  
+  .score-value {
+    font-size: 1.5rem;
+  }
+}

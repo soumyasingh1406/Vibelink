@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="gradLink" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22d3ee" />   <!-- Cyan -->
+      <stop offset="0.5" stop-color="#a855f7" /> <!-- Purple -->
+      <stop offset="1" stop-color="#f472b6" />   <!-- Pink -->
+    </linearGradient>
+    <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+      <feMerge>
+        <feMergeNode in="coloredBlur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g filter="url(#neonGlow)">
+    <!-- Left Link (Tilted pill) -->
+    <rect x="20" y="30" width="20" height="50" rx="10" transform="rotate(-35 30 55)" 
+          stroke="url(#gradLink)" stroke-width="8" fill="none" />
+          
+    <!-- Right Link (Tilted pill) - Interlocked -->
+    <!-- We draw it in two parts to simulate interlocking/over-under if possible, or just overlay -->
+    <rect x="60" y="30" width="20" height="50" rx="10" transform="rotate(35 70 55)" 
+          stroke="url(#gradLink)" stroke-width="8" fill="none" />
+          
+    <!-- Center Connection Dot/Spark -->
+    <circle cx="50" cy="70" r="5" fill="white" fill-opacity="0.9">
+       <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" />
+    </circle>
+  </g>
+</svg>
