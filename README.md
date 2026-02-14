@@ -101,7 +101,7 @@ Socket.io Server (Real-time Multiplayer Rooms)
 ### 1️⃣ Clone the Repository
 
 
-git clone https://github.com/swatiraniiii1210/Vibelink.git
+ git clone https://github.com/soumyasingh1406/Vibelink.git
 
 
 ### 2️⃣ Navigate to Project Folder
@@ -242,8 +242,7 @@ The build can be fully reproduced using the steps above.
 
 ## 📎 Repository Link
 
-https://github.com/swatiraniiii1210/Vibelink
-
+(https://github.com/soumyasingh1406/Vibelink)
 ---
 
 ## 🎯 Closing Statement
